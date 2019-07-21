@@ -4,10 +4,12 @@ import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.openqa.selenium.chrome.ChromeDriver;
+import pages.RegisterPage;
 
 
 public class RegisterTest extends AbstractActions {
+    private RegisterPage registerPage = new RegisterPage();
+
     @BeforeClass
     public static void setUp(){
     }
@@ -16,9 +18,9 @@ public class RegisterTest extends AbstractActions {
      */
     @Test
     public void testUrl() {
-        goUrl(data.BASE_URL);
+        goUrl(dataManage.urls.BASE_URL);
         waitForPageLoad();
-        Assert.assertEquals(driver.getCurrentUrl(), data.BASE_URL.concat("/"));
+        Assert.assertEquals(driver.getCurrentUrl(), dataManage.urls.BASE_URL.concat("/"));
     }
 
     /**
@@ -26,9 +28,9 @@ public class RegisterTest extends AbstractActions {
      */
     @Test
     public void testRegisterButton() {
-        clickCssSelector(".register-text > a");
+        registerButton.click();
         waitForPageLoad();
-        Assert.assertEquals(driver.getCurrentUrl(),data.REGISTER_PAGE_URL);
+        Assert.assertEquals(driver.getCurrentUrl(),dataManage.urls.REGISTER_PAGE_URL);
     }
 
     /**
@@ -38,25 +40,21 @@ public class RegisterTest extends AbstractActions {
      */
     @Test
     public void testRegisterForm() throws InterruptedException {
-        clickCssSelector("[for=\"corporate\"]");
+        registirationType.click();
 
-        writeToInput("#name", data.REGISTER_NAME);
-        writeToInput("#surname", data.REGISTER_SURNAME);
-        writeToInput("#email", data.REGISTER_MAIL);
-        writeToInput("#password", data.REGISTER_PASSWORD);
-        writeToInput("#mobile", data.REGISTER_MOBILE);
+        registerPage.setName(dataManage.identity.REGISTER_NAME);
+        registerPage.setSurname(dataManage.identity.REGISTER_SURNAME);
+        registerPage.setEmail(dataManage.identity.REGISTER_MAIL);
+        registerPage.setPassword(dataManage.identity.REGISTER_PASSWORD);
 
-        selectDropdownItem("#category", data.CHOSEN_CATEGORY);
-        selectDropdownItem("#city", data.CHOSEN_CITY);
-        selectDropdownItem("#town", data.CHOSEN_TOWN);
-        selectDropdownItem("#quarter", data.CHOSEN_QUARTER);
+        registerPage.setMobile(dataManage.identity.REGISTER_MOBILE);
 
-        writeToInput("#address", data.CHOSEN_ADDRESS);
+        selectDropdownItem(category,dataManage.identity.CHOSEN_CATEGORY);
+        selectDropdownItem(city,dataManage.identity.CHOSEN_CITY);
+        selectDropdownItem(town,dataManage.identity.CHOSEN_TOWN);
+        selectDropdownItem(quarter,dataManage.identity.CHOSEN_QUARTER);
 
-        selectDropdownItem("#taxOffice", data.CHOSEN_TAX_OFFICE);
 
-        writeToInput("#idNumber", data.IDENTITY_NUMBER);
-        writeToInput("#phone", data.PHONE_NUMBER);
 
     }
 
