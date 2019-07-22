@@ -47,15 +47,26 @@ public class RegisterPage extends ChromeDriverManager {
     @FindBy(id="phone")
     public WebElement phone;
 
+    @FindBy(id="phone2")
+    public WebElement phone2;
+
     @FindBy(css=".register-text > a")
     public WebElement registerButton;
 
     @FindBy(css = "[for=\"corporate\"]")
-    public WebElement registirationType;
+    public WebElement registrationType;
+
+    @FindBy(id = "signUpButton")
+    public WebElement submitButton;
+
+    @FindBy(css = "dd > [for=\"captchaValue\"]")
+    public WebElement captchaError;
+
+    @FindBy(css = ".captchaInputinputText.error")
+    public WebElement errorBox;
 
     public RegisterPage(){
         //Initialise Elements
-        this.driver=driver;
 
         PageFactory.initElements(driver, this);
     }
@@ -94,4 +105,8 @@ public class RegisterPage extends ChromeDriverManager {
     public void setPhone(String data) {
         phone.sendKeys(data);
     }
+    public void setPhone2(String data) {
+        phone2.sendKeys(data);
+    }
+
 }
