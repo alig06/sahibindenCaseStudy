@@ -70,8 +70,9 @@ public class SearchEstateTest extends AbstractActions {
         // Scroll to shipping option
         JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
         driver.executeScript("arguments[0].scrollIntoView(true);", searchEstatePage.shipping);
+        driver.executeScript("arguments[0].scrollIntoView(false);", searchEstatePage.shipping);
         searchEstatePage.shipping.click();
-        searchEstatePage.shipping.click();
+
     }
 
     /**

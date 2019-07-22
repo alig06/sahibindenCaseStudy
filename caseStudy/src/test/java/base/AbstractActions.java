@@ -64,6 +64,9 @@ public abstract class AbstractActions extends ChromeDriverManager{
     }
 
     public void waitInvisibilityOfElement(WebElement element){
+        logger.log(Level.INFO,"Waiting for element of invisibility");
         wait.until(ExpectedConditions.invisibilityOf(element));
+        logger.log(Level.INFO,"Element is ");
+
     }
 }
