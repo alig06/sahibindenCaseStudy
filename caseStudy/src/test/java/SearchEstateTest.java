@@ -1,20 +1,12 @@
 import base.AbstractActions;
-import org.junit.AfterClass;
-import org.junit.Assert;
-import org.junit.BeforeClass;
-import org.junit.Test;
 import dataRepository.dataManage;
-import org.junit.experimental.categories.Category;
+import org.junit.Assert;
+import org.junit.Test;
 import org.openqa.selenium.JavascriptExecutor;
 import pages.SearchEstatePage;
 
 public class SearchEstateTest extends AbstractActions {
     private SearchEstatePage searchEstatePage = new SearchEstatePage();
-
-    @BeforeClass
-    public static void setUp() {
-
-    }
 
     /**
      * Check the expected url equality
@@ -99,10 +91,8 @@ public class SearchEstateTest extends AbstractActions {
 
         //Check equality
         Assert.assertEquals(searchEstatePage.selectedElement.getAttribute("class"), dataManage.identity.SELECTED_CLASS);
-    }
 
-    @AfterClass
-    public static void tearDown() {
-        driver.quit();
+        // Finish (driver quit)
+        tearDown();
     }
 }

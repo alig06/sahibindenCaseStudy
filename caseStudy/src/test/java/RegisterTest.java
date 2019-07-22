@@ -1,18 +1,12 @@
 import base.AbstractActions;
 import dataRepository.dataManage;
-import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 import pages.RegisterPage;
 
 public class RegisterTest extends AbstractActions {
     private RegisterPage registerPage = new RegisterPage();
-
-    @BeforeClass
-    public static void setUp() {
-    }
 
     /**
      * Check the expected url equality
@@ -79,10 +73,8 @@ public class RegisterTest extends AbstractActions {
         waitForElement(registerPage.captchaError);
         Assert.assertEquals(
                 takeTextToElement(registerPage.captchaError), dataManage.errorText.emptySecCodeError);
-    }
 
-    @AfterClass
-    public static void tearDown() {
-        driver.quit();
+        // Finish (driver quit)
+        tearDown();
     }
 }
