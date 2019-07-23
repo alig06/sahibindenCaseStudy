@@ -1,7 +1,9 @@
 package pages;
 
+import base.AbstractActions;
 import base.ChromeDriverManager;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -39,7 +41,7 @@ public class SearchEstatePage extends ChromeDriverManager {
     @FindBy(id = "cboxContent")
     public WebElement popUp;
 
-    @FindBy(linkText = "Avrasya Tüneli")
+    @FindBy(id = "faceted-true-a106958")
     public WebElement avrasyaTuneli;
 
     @FindBy(id = "doDetailedSearchButton")
@@ -59,6 +61,9 @@ public class SearchEstatePage extends ChromeDriverManager {
 
     @FindBy(css = ".opening")
     public WebElement opening;
+
+    @FindBy(xpath = "//*[@id=\"facetedSearchListContainer\"]/div")
+    public WebElement reachList;
 
     public SearchEstatePage(){
         //Initialise Elements

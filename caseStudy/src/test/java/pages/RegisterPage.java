@@ -1,5 +1,6 @@
 package pages;
 
+import base.AbstractActions;
 import base.ChromeDriverManager;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

@@ -1,7 +1,10 @@
 package base;
 
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -12,7 +15,6 @@ import java.util.logging.Logger;
 
 public abstract class AbstractActions extends ChromeDriverManager{
     private Logger logger = Logger.getLogger(String.valueOf(AbstractActions.class));
-
     protected WebDriverWait wait = new WebDriverWait(driver,20);
 
     public void goUrl(String url){
@@ -68,7 +70,9 @@ public abstract class AbstractActions extends ChromeDriverManager{
         logger.log(Level.INFO,"Element is ");
 
     }
-    public void tearDown(){
+
+    @AfterClass
+    public static void tearDown(){
         driver.quit();
     }
 }

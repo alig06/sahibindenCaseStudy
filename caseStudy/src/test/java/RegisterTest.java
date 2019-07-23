@@ -1,9 +1,12 @@
 import base.AbstractActions;
+import base.ChromeDriverManager;
 import dataRepository.dataManage;
+import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import pages.RegisterPage;
+
 
 public class RegisterTest extends AbstractActions {
     private RegisterPage registerPage = new RegisterPage();
@@ -23,8 +26,9 @@ public class RegisterTest extends AbstractActions {
      * Check the Register button workable
      */
     @Test
-    public void testRegisterButton() {
+    public void testRegisterButton() throws InterruptedException {
         // Click register button and url control
+        waitForClickable(registerPage.registerButton);
         registerPage.registerButton.click();
         waitForPageLoad();
         Assert.assertEquals(driver.getCurrentUrl(), dataManage.urls.REGISTER_PAGE_URL);
@@ -60,6 +64,7 @@ public class RegisterTest extends AbstractActions {
         registerPage.setPhone(dataManage.identity.PHONE_NUMBER);
         registerPage.setPhone2(dataManage.identity.PHONE_NUMBER_2);
         registerPage.submitButton.click();
+
     }
 
     /**
@@ -73,8 +78,5 @@ public class RegisterTest extends AbstractActions {
         waitForElement(registerPage.captchaError);
         Assert.assertEquals(
                 takeTextToElement(registerPage.captchaError), dataManage.errorText.emptySecCodeError);
-
-        // Finish (driver quit)
-        tearDown();
     }
 }

@@ -64,7 +64,6 @@ public class SearchEstateTest extends AbstractActions {
         driver.executeScript("arguments[0].scrollIntoView(true);", searchEstatePage.shipping);
         driver.executeScript("arguments[0].scrollIntoView(false);", searchEstatePage.shipping);
         searchEstatePage.shipping.click();
-
     }
 
     /**
@@ -75,7 +74,7 @@ public class SearchEstateTest extends AbstractActions {
     @Test
     public void testExpectedValueEquality() throws InterruptedException {
         // Wait and click "Avrasya Tuneli" checkbox
-        waitForElement(searchEstatePage.avrasyaTuneli);
+        waitForClickable(searchEstatePage.avrasyaTuneli);
         searchEstatePage.avrasyaTuneli.click();
 
         // Submit popUp form
@@ -91,8 +90,5 @@ public class SearchEstateTest extends AbstractActions {
 
         //Check equality
         Assert.assertEquals(searchEstatePage.selectedElement.getAttribute("class"), dataManage.identity.SELECTED_CLASS);
-
-        // Finish (driver quit)
-        tearDown();
     }
 }
